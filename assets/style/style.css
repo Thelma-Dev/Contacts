@@ -3,6 +3,7 @@
 :root {
     --app-dark-bg:#1a1d28;
     --app-blue:#3c57ff;
+    --app-blue-hover:#1937fc;
     --app-green-hover: #049e51;
     --app-light-green: #04a856;
     --app-border-radius: 6px;
@@ -33,12 +34,12 @@ h1 {
 }
 
 form {
-    margin-top: 10px;
+    margin-top: 5px;
     text-align: right;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 500px;
+    width: 650px;
     height: 90px;
     padding: 18px;
     border: none;
@@ -54,7 +55,7 @@ form p {
 }
 
 input[type="text"] {
-    width: 350px;
+    width: 480px;
     height: 48px;
     padding: 0 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -92,24 +93,69 @@ input[type="button"]:hover {
 }
 
 .storage {
-    width: 100%;
-    height: 420px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
-    border: 1px solid #fff;
-    margin-top: 10px;
-    padding: 10px;
-    gap: 15px;
+    width: 900px;
+    height: 400px;
     display: grid;
-    transform: rotate(180deg);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
+    border: 1px solid #fff;
+    margin: 5px auto;
+    padding: 10px;
     border-radius: 5px;
 }
 
 .box {
     border-radius: var(--app-border-radius);
+    padding: 15px;
     border: none;
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 100px;
+    color: #f4f6f8;
     background-color: rgba(49, 53, 66, 0.9);
+    transform: rotate(0deg);
 }
 
+.box:hover {
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+
+.output {
+    width: 350px;
+    height: 50px;
+    padding: 0 15px;
+    border-radius: 4px;
+    background-color:none;
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2) inset, -1px -1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.output p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #f2f4f6;
+    line-height: 52px;
+    cursor: default;
+}
+
+.display {
+    width: 150px;
+    height: 50px;
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    padding: 15px;
+    border-radius: 4px;
+    background-color:var(--app-blue);
+    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.2) inset, -1px -1px 1px 0 rgba(255, 255, 255, 0.1) inset;
+    text-align: center;
+    margin-inline: auto;
+}
+
+.display p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #f2f4f6;
+    cursor: default;
+}
