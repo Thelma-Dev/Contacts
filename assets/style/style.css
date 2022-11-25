@@ -1,0 +1,115 @@
+@import './reset.css';
+
+:root {
+    --app-dark-bg:#1a1d28;
+    --app-blue:#3c57ff;
+    --app-green-hover: #049e51;
+    --app-light-green: #04a856;
+    --app-border-radius: 6px;
+}
+
+body {
+    background-color: var(--app-dark-bg);
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    width: min(100% - 30px, 1080px);
+    margin-inline: auto;
+}
+
+main {
+    padding: 20px 0;
+    display: grid;
+    place-items: center;
+}
+
+h1 {
+    color: #f2f4f6;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+form {
+    margin-top: 10px;
+    text-align: right;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 500px;
+    height: 90px;
+    padding: 18px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: var(--app-border-radius);
+    margin-inline: auto;
+}
+
+form p {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 350px;
+    height: 48px;
+    padding: 0 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    text-align: left;
+}
+
+input:focus {
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+input[type="button"] {
+    width: 100px;
+    height: 46px;
+    text-align: center;
+    background-color: var(--app-blue);
+    border: none;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: all 0.25s ease-in-out;
+    color: #fff;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: var(--app-blue-hover);
+}
+
+.storage {
+    width: 100%;
+    height: 420px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(300px, 1fr));
+    border: 1px solid #fff;
+    margin-top: 10px;
+    padding: 10px;
+    gap: 15px;
+    display: grid;
+    transform: rotate(180deg);
+    border-radius: 5px;
+}
+
+.box {
+    border-radius: var(--app-border-radius);
+    border: none;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(49, 53, 66, 0.9);
+}
+
