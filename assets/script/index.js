@@ -26,9 +26,9 @@ const savedContact = select('.display p');
 const array = [];
 
 
-
+let count = 1;
 onEvent('click', btn, function() {
-
+    
     let entry = input.value.trim();
     let entryInfo = entry.split(", ", 3);
     let contactBox = document.createElement('div');
@@ -44,27 +44,38 @@ onEvent('click', btn, function() {
     } else if (!emailRegex.test(entryInfo[2])) {
         message +=  'Email is Invalid\n'
         valid = false;
-    } 
+    }
 
     if (!valid) {
-       output.innerText = message; 
+       output.innerText = message;
+       count--; 
     } else {
         let userIdentity = contact;
-        console.log(userIdentity);
-        output.innerText = 'Form Submitted';
-        if(validateLimit()) {
-            array.unshift(userIdentity);
-        }
-        listContacts(contactBox, contact); 
+        output.innerText = 'Contact Submitted';
+        array.unshift(userIdentity);
+        listContacts(contactBox, contact);
+        validateLimit();
+        savedContact.innerText = `Saved contact: ${count}` ; 
         input.value = '';
-    } 
+        count = count++;
+    }
+
+    onEvent('click', contactBox, () => {
+        deleteInput();
+        contactBox.remove();
+        count--;
+        savedContact.innerText = `Saved contact: ${count--}` ; 
+    });
+
+    
+    count++;
 });
 
 function validateLimit() {
     let numberOfShapes = storage.children.length
-    if(numberOfShapes === 14) {
+    if(numberOfShapes === 9) {
         btn.disabled = true;
-        output.innerText = 'Storage is full!';
+        output.innerText = 'Contact list is full!';
         return false;
     }
 
@@ -73,7 +84,6 @@ function validateLimit() {
 
 
 function listContacts(contactBox, obj) {
-    let count = 0;
 
     let p1 = document.createElement('p');
     let p2 = document.createElement('p');
@@ -85,19 +95,23 @@ function listContacts(contactBox, obj) {
     p3.innerText = `Email: ${obj.email}`
     contactBox.append(p1, p2, p3);
     storage.append(contactBox);
-    count++;
-    savedContact.innerText = `Saved contact: ${count++}` ;
-    
-    contactBox.addEventListener('click', () => {
-        deleteInput();
-    });
+    console.log(contactBox);
 }
 
-function deleteInput() {
-    array.forEach(function(item, index) {
-         item.splice(index, 1);
-      });
+function deleteInput(contactBox, obj) {
+    let index = array.indexOf(obj); 
+    for( let i = 0; i < array.length; i++){ 
+        if ( array[i] === index) { 
+            array.splice(index, 1); 
+        }
+    }
+    output.innerText= `Contact list Deleted`;
 }
+
+
+
+
+
 
 
 
