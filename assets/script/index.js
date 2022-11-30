@@ -60,15 +60,14 @@ onEvent('click', btn, function() {
         count = count++;
     }
 
-    onEvent('click', contactBox, () => {
-        deleteInput();
-        contactBox.remove();
-        count--;
-        savedContact.innerText = `Saved contact: ${count--}` ; 
-    });
-
-    
     count++;
+
+    onEvent('click', contactBox, () => {
+        deleteInput(contactBox, contact);
+        contactBox.remove();
+        savedContact.innerText = `Saved contact: ${count--}` ; 
+        count--;
+    });  
 });
 
 function validateLimit() {
@@ -99,12 +98,13 @@ function listContacts(contactBox, obj) {
 }
 
 function deleteInput(contactBox, obj) {
-    let index = array.indexOf(obj); 
+    let index = array.indexOf(obj);
     for( let i = 0; i < array.length; i++){ 
-        if ( array[i] === index) { 
-            array.splice(index, 1); 
+        if (array[i] === obj) { 
+            array.splice(i, 1); 
         }
     }
+    console.log(array);
     output.innerText= `Contact list Deleted`;
 }
 
